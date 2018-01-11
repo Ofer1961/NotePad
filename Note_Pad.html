@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title>Counter</title>
+		<script
+			src="http://code.jquery.com/jquery-3.2.1.min.js"
+			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			crossorigin="anonymous">
+		</script>
+		
+		<script>
+			$(function(){ //Like main() in C
+				// All your code is here
+				var savedTitle = localStorage["title"];
+				var savedNote = localStorage["note"];
+				var counter = 0;
+				
+				$("#title").val(savedTitle);
+				$("#note").val(savedNote);
+				
+				setInterval(function(){
+					var title = $("#title").val();
+					var note = $("#note").val();
+					
+					counter++;
+					$("#CounterElement").html(counter); // put counter into the html body.
+					
+					localStorage["title"] = title; // we put into storage the var "title"
+					localStorage["note"] = note; // we put into storage the var "note"
+					/*console.log(title); // keeps a log of what we are typing	*/			
+				},1000);
+			});
+		</script>
+	
+	</head>
+	<body>		
+		
+		<form> 
+			<h3> Title <h3>
+			<input id="title" type="text" />
+			<br />
+			<h3> Note <h3>
+			<textarea id="note" rows="10" cols="50" >
+			</textarea>	
+		</form>
+		
+		<hr /> <!--  horizontal line -->
+		<h4> Note saved <span id="CounterElement"> 0 </span> times </h4>
+	</body>
+</html>
